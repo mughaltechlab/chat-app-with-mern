@@ -1,10 +1,40 @@
+import Conversation from "../models/conversation.model.js";
 import Message from "../models/message.model.js";
 
-export const sendMessage = (req,res)=>{
+export const sendMessage = async (req,res)=>{
     try {
         const {message} = req.body;
-        const {id} = req.params;
+        const {id: recieverId} = req.params;
         const senderId = req.user._id;
+
+        // here we check that their is any conversation bw sender and reciever
+        let conversation = await Conversation.findOne({
+            participants: { $all: [senderId, recieverId] },
+        })
+
+        // if their is no any conversation bw sender and reciever so create one
+        if (!conversation) {
+            conversation = await Conversation.create({
+                participants: [senderId, recieverId],
+            })
+        }
+
+        const newMessage = new Message({
+            senderId,
+            recieverId,
+            message
+        });
+
+        if (newMessage) {
+            conversation.messages.push(newMessage._id);
+        }
+
+        await conversation.save();
+        await newMessage.save();
+
+        // console.log({newMessage});
+
+        res.status(201).json(newMessage);
 
     } catch (e) {
         console.log("Error in sendMessage controller: ", e.message);
