@@ -3,7 +3,7 @@ import {RiLogoutCircleLine} from "react-icons/ri"
 
 const LogoutBtn = () => {
   return (
-    <div className='mt-auto'>
+    <div className='mt-auto py-2'>
         <RiLogoutCircleLine className='text-red-400 hover:text-red-600 cursor-pointer group delay-75 w-6 h-6' />
     </div>
   )
