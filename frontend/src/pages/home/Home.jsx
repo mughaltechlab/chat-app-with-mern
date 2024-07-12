@@ -1,8 +1,15 @@
 import React from 'react'
 import Sidebar from '../../components/sidebar/Sidebar'
 import MessageContainer from '../../components/messages/MessageContainer'
+import { useAuthContext } from '../../context/AuthContext';
+
 
 function Home() {
+  const {authUser} = useAuthContext();
+  
+  if(authUser){
+    console.log({authUser});
+  }
   return (
     <div className="
         flex sm:h-[450px] md:h-[550px] overflow-hidden 
