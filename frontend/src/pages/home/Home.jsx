@@ -10,6 +10,8 @@ function Home() {
   if(authUser){
     console.log({authUser});
   }
+
+  
   return (
     <div className="
         flex sm:h-[450px] md:h-[550px] overflow-hidden 

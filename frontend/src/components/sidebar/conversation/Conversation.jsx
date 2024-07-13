@@ -1,19 +1,19 @@
 import React from 'react'
 
-const Conversation = () => {
+const Conversation = ({data}) => {
   return (
     <>
         <div className='flex gap-2 items-center hover:bg-violet-800 rounded p-2 py-1 transition-all duration-150 cursor-pointer '>
             {/* avatar */}
             <div className={`avatar online `}>
                 <div className="w-12 rounded-full">
-                    <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                    <img src={data.profilePic} />
                 </div>
             </div>
             <div className="flex flex-col flex-1">
                 <div className="flex gap-3 justify-between ">
                     {/* name */}
-                    <p className="text-gray-300">Emily Matty</p>
+                    <p className="text-gray-300">{data.fullName}</p>
                     {/* emoji */}
                     <span className="text-xl">😴</span>
                 </div>

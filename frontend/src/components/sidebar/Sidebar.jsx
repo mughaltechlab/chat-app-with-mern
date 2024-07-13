@@ -4,6 +4,10 @@ import Conversations from './conversation/Conversations'
 import LogoutBtn from './LogoutBtn'
 
 function Sidebar() {
+
+  
+
+  
   return (
     <div className='border-r border-slate-500 p-4 flex flex-col '>
         {/* searchbar */}
