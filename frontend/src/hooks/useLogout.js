@@ -6,6 +6,7 @@ const useLogout = () => {
   const [loading, setLoading] = useState(false);
   const {setAuthUser} = useAuthContext();
 
+
   const logout = async ()=>{
     setLoading(true);
 

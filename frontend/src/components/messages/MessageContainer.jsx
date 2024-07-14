@@ -1,25 +1,37 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Messages from './Messages'
 import MessageInput from './MessageInput'
 import {TiMessages} from "react-icons/ti"
 import { useAuthContext } from '../../context/AuthContext'
+import useConversation from '../../zustand-store/useConversation'
 
 const MessageContainer = () => {
 
-  const noChateSelected = true;
+  const {selectedConversation, setSelectedConversation} = useConversation();
+
+  useEffect(()=>{
+
+
+    // cleanup function (unmount)
+    return ()=>{
+      setSelectedConversation(null);
+      console.log('===========unmount==========')
+    }
+    
+  },[setSelectedConversation]);
 
   const {authUser} = useAuthContext();
   
   return (
     <div className='md:min-w-[450px] flex flex-col '>
         {
-          noChateSelected 
+          !selectedConversation 
           ? <NoChatSelected data = {authUser} />
           : (
             <>
             {/* header */}
-            <div className="bg-violet-400 px-4 py-2 mb-2 ">
-                <span className="label-text ">To:</span> <span className="font-bold">Lone wolf</span>
+            <div className="bg-violet-400 px-4 py-2 mb-2 ">                        {/*.............. */}
+                <span className="label-text ">To:</span> <span className="font-bold">{selectedConversation.fullName}</span>
             </div>
             {/* messages */}
             <Messages />
