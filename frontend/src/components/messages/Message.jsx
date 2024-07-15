@@ -7,6 +7,7 @@ const Message = ({msg}) => {
 
     const {authUser} = useAuthContext();
     const {selectedConversation} = useConversation();
+    
     const fromMySide = authUser._id === msg.senderId;
     const chatClassName = fromMySide ? 'chat-end' : 'chat-start';
     const profilePic = fromMySide ? authUser.profilePic : selectedConversation.profilePic;

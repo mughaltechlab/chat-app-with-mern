@@ -2,6 +2,9 @@
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
+
+import { app, server } from "./socket/socket.js";
+
 // files import
 import authRoutes from "./routes/auth.routes.js";
 import messageRoutes from "./routes/message.routes.js";
@@ -11,7 +14,7 @@ import connectToMongoDB from "./db/connectToMongoDB.js";
 
 dotenv.config();
 // variables
-const app = express();
+// const app = express();
 const PORT = process.env.PORT || 5000;
 
 //:: APP MIDDLEWARE
@@ -30,7 +33,7 @@ app.use("/api/users", userRoutes);
 // })
 
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     connectToMongoDB();
     console.log('Server is running on ' + PORT);
 });
