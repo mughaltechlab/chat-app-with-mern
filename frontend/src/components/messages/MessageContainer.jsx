@@ -31,7 +31,7 @@ const MessageContainer = () => {
             <>
             {/* header */}
             <div className="bg-violet-400 px-4 py-2 mb-2 ">                        {/*.............. */}
-                <span className="label-text ">To:</span> <span className="font-bold">{selectedConversation.fullName}</span>
+                <span className="label-text ">To:</span> <span className="font-semibold text-white">{selectedConversation.fullName}</span>
             </div>
             {/* messages */}
             <Messages />

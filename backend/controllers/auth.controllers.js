@@ -22,9 +22,12 @@ export const signup = async (req,res)=>{
         
         // avatar api url: https://avatar-placeholder.iran.liara.run/document
 
+        // https://ui-avatars.com/api/?name=sahar
+
         const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=${userName}`;
         const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${userName}`;
-
+        // profilePic: `https://ui-avatars.com/api/?name=${userName}`,
+        
         const newUser = new User({
             fullName,
             userName,

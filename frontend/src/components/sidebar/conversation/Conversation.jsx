@@ -18,6 +18,8 @@ const Conversation = ({conversation, emoji, lastIndex}) => {
             <div className={`avatar online `}>
                 <div className="w-12 rounded-full">
                     <img src={conversation.profilePic} />
+                    {/* <img src={"https://api.dicebear.com/9.x/lorelei/svg?seed=sahar"} /> */}
+                    {/* https://api.dicebear.com/9.x/lorelei/svg?seed=sahar */}
                 </div>
             </div>
             <div className="flex flex-col flex-1">
