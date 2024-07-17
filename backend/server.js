@@ -15,7 +15,7 @@ import connectToMongoDB from "./db/connectToMongoDB.js";
 dotenv.config();
 // variables
 // const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 
 //:: APP MIDDLEWARE
 

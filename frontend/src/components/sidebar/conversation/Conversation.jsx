@@ -1,13 +1,15 @@
 import React from 'react'
 import useConversation from '../../../zustand-store/useConversation'
+import { useSocketContext } from '../../../context/SocketContext';
 
 const Conversation = ({conversation, emoji, lastIndex}) => {
 
     const {selectedConversation, setSelectedConversation} = useConversation();
     const isSelected = selectedConversation?._id === conversation._id;
-    
 
-    
+    const {onlineUsers} = useSocketContext();
+    const isOnline = onlineUsers.includes(conversation?._id);
+
   return (
     <>
         <div 
@@ -15,7 +17,7 @@ const Conversation = ({conversation, emoji, lastIndex}) => {
             className={` ${isSelected && 'bg-violet-800'} flex gap-2 items-center hover:bg-violet-800 rounded p-2 py-1 transition-all duration-150 cursor-pointer `}
         >
             {/* avatar */}
-            <div className={`avatar online `}>
+            <div className={`avatar ${isOnline && 'online'} `}>
                 <div className="w-12 rounded-full">
                     <img src={conversation.profilePic} />
                     {/* <img src={"https://api.dicebear.com/9.x/lorelei/svg?seed=sahar"} /> */}

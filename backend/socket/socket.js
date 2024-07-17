@@ -26,6 +26,8 @@ io.on('connection', (socket) => {
     // io.emit() used to send event to all connected clients
     io.emit('getOnlineUsers', Object.keys(userSocketMap));
 
+    // console.log(userSocketMap);
+
     // socket.on() is used to listen to the events. Can be used both on client and server side
     socket.on('disconnect', () => {
         console.log('A user disconnected');
