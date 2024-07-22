@@ -21,9 +21,6 @@ export const sendMessage = async (req,res)=>{
         }
 
         const newMessage = new Message({
-            // senderId: senderId,,
-            // recieverId: recieverId,,
-            // message: message
             senderId,
             recieverId,
             message
@@ -44,7 +41,7 @@ export const sendMessage = async (req,res)=>{
 
         if (recieverSocketId) {
             // * io.to(<socket_id>).emit() used to send events to specific client
-            io.to(recieverId).emit("newMessage", newMessage);
+            io.to(recieverSocketId).emit("newMessage", newMessage);
         }
 
         // console.log({newMessage});
@@ -71,9 +68,9 @@ export const getMessages = async (req,res)=>{
             return res.status(200).json([]);            
         }
 
-        const msgs = conversation.messages;
+        const messages = conversation.messages;
         
-        res.status(200).json(msgs);
+        res.status(200).json(messages);
         
     } catch (e) {
         console.log("Error in getMessages controller: ", e.message);

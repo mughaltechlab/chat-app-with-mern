@@ -12,6 +12,7 @@ const Message = ({msg}) => {
     const chatClassName = fromMySide ? 'chat-end' : 'chat-start';
     const profilePic = fromMySide ? authUser.profilePic : selectedConversation.profilePic;
     const bubbleBg = fromMySide ? 'bg-violet-800' : '';
+    const shakeClass = msg.shouldShake && 'shake';
     
   return (
     <div className={`chat ${chatClassName}`}>
@@ -24,7 +25,7 @@ const Message = ({msg}) => {
                 />
             </div>
         </div>
-        <div className={`chat-bubble text-white ${bubbleBg} text-sm`}>{msg.message}</div>
+        <div className={`chat-bubble text-white ${bubbleBg} ${shakeClass} text-sm`}>{msg.message}</div>
         <div className="chat-footer opacity-50">
             <time className="text-xs text-white opacity-50">{extractTime(msg.createdAt)}</time>
         </div>
